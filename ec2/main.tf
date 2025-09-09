@@ -9,7 +9,7 @@ resource "aws_instance" "web_instance" {
     type        = "ssh"
     host        = aws_instance.web_instance[count.index].public_ip
     user        = "ec2-user"
-    private_key = file("k8s.pem") # Adjust path to your private key
+    private_key = file("./k8s.pem") # Adjust path to your private key
   }
  
   provisioner "remote-exec" {
