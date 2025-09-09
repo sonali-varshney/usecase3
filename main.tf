@@ -31,9 +31,9 @@ module "vpc"{
     vpc_name = var.vpc_name
     pub_cidr_block = var.pub_cidr_block
     pub_availability_zone = var.pub_availability_zone
-    prv_availability_zone = var.prv_availability_zone
+    #prv_availability_zone = var.prv_availability_zone
     igw_name = var.igw_name
-    prv_cidr_block = var.prv_cidr_block
+    #prv_cidr_block = var.prv_cidr_block
 }
 
 module "secgp"{
