@@ -70,7 +70,7 @@ variable "ami"{
 }
 
 variable "instance_type"{
-    default = "t3.micro"
+    default = "m7i-flex.large"
 }
 
 variable "target_group_port" {
