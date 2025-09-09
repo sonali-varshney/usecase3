@@ -5,7 +5,3 @@ output "pubsubnet"{
 output "vpcid"{
     value = aws_vpc.vpcdemo.id
 }
-
-output "prvsubnet"{
-    value = aws_subnet.prv_subnet[*].id
-}

@@ -48,39 +48,3 @@ resource "aws_route_table_association" "associate_with_pub_subnet" {
 }
 
 
-resource "aws_subnet" "prv_subnet" {
-  vpc_id     = aws_vpc.vpcdemo.id
-  count      = length(var.prv_cidr_block)                      #Note
-
-  cidr_block = var.prv_cidr_block[count.index]                #Note
-  availability_zone = var.prv_availability_zone[count.index]  #Note
-  map_public_ip_on_launch = false   # to indicate that instances launched into the subnet should not be assigned a public IP address
-  
-  tags = {
-    Name = "prvsubnet-${var.prv_availability_zone[count.index]}"
-  }
-}
-
-resource "aws_route_table" "priv_route_table" {
-  vpc_id = aws_vpc.vpcdemo.id
-
-#   route {
-#     cidr_block = "0.0.0.0/0"
-#     gateway_id = aws_nat_gateway.nat.id
-#   }
-
-  tags = {
-    Name = "private route table"
-  }
-}
-
-resource "aws_route_table_association" "associate_with_prv_subnet" {
-  count          = length(var.prv_cidr_block) 
-  subnet_id      = element(aws_subnet.prv_subnet[*].id, count.index)
-  route_table_id = aws_route_table.priv_route_table.id
-}
-
-
-
-
-
