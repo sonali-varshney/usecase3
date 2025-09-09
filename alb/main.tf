@@ -49,7 +49,8 @@ resource "aws_lb_listener" "aws_lb_listener" {
 }
 
 resource "aws_lb_target_group_attachment" "lb_target_group_attachment" {
+  count = var.ec2_ids[count.index] 
   target_group_arn = aws_lb_target_group.target_group.arn
-  target_id        = var.ec2_id
+  target_id        = var.ec2_id[count.index]
   port             = 80
 }
