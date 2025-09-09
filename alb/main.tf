@@ -1,6 +1,6 @@
 resource "aws_lb" "myalb" {
   name               = var.alb_name
-  count            = length(var.pub_cidr_block)
+ # count            = length(var.pub_cidr_block)
   internal           = false
   load_balancer_type = "application"
   security_groups    = [var.alb_sec_gp]           #NOTE it takes a list of strings
