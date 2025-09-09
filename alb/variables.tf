@@ -25,7 +25,7 @@ variable "alb_name" {
 
 variable "alb_sec_gp" {
   description = "The security group for the ALB"
-  type        = string
+ # type        = string
 }
 
 variable "pub_cidr_block" {
