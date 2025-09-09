@@ -7,7 +7,7 @@ resource "aws_instance" "web_instance" {
 
   connection {  #NOTE
     type        = "ssh"
-    host        = aws_instance.web_instance.public_ip
+    host        = aws_instance.web_instance[count.index].public_ip
     user        = "ec2-user"
     private_key = file("k8s.pem") # Adjust path to your private key
   }
@@ -21,7 +21,7 @@ resource "aws_instance" "web_instance" {
       "sudo usermod -aG docker ec2-user",
       "sg docker -c",
       "sudo mkdir -p /var/lib/openproject/{pgdata,assets}",
-      "sudo docker run -d --name openproject -p 8080:80 -e OPENPROJECT_HOST_NAME=$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4) -e OPENPROJECT_SECRET_KEY_BASE=$(openssl rand -hex 32) -e OPENPROJECT_HTTPS=false -v /var/lib/openproject/pgdata:/var/openproject/pgdata -v /var/lib/openproject/assets:/var/openproject/assets openproject/openproject:16"
+      "sudo docker run -d --name openproject -p 8080:80 -e OPENPROJECT_HOST_NAME=${self.public_ip}:8080 -e OPENPROJECT_SECRET_KEY_BASE=$(openssl rand -hex 32) -e OPENPROJECT_HTTPS=false -v /var/lib/openproject/pgdata:/var/openproject/pgdata -v /var/lib/openproject/assets:/var/openproject/assets openproject/openproject:16"
     ]
   }
 
