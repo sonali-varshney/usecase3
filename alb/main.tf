@@ -5,7 +5,7 @@ resource "aws_lb" "myalb" {
   load_balancer_type = "application"
   security_groups    = [var.alb_sec_gp]           #NOTE it takes a list of strings
   vpc_id             = var.vpc_id
-  subnets            = element(var.pubsubnet,count.index)
+  subnets            = var.pubsubnet
 
   enable_deletion_protection = true
 
