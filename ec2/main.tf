@@ -13,8 +13,10 @@ resource "aws_instance" "web_instance" {
     sudo systemctl enable docker
     sudo usermod -aG docker $USER
     newgrp docker
-    docker run -d -p 80:80 --name openproject openproject/community:13
-
+    docker run -it -p 8080:80 -e OPENPROJECT_SECRET_KEY_BASE=openProject@123 \
+    -e OPENPROJECT_HOST__NAME=${self.public_ip}:8080 \
+    -e OPENPROJECT_HTTPS=false openproject/openproject:16
+    
   EOF
 
   tags = {
