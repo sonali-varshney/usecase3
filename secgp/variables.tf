@@ -5,3 +5,4 @@ variable "ssh_port"{}
 variable "http_port"{}
 variable "alb_sec_gp_name"{}
 variable "alb_ingress_port"{}
+variable "container_port"{}

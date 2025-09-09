@@ -100,3 +100,7 @@ variable "listener_port" {
 variable "listener_protocol" {
     default = "HTTP"
 }
+
+variable "container_port"{
+    default = 8080
+}

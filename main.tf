@@ -45,4 +45,5 @@ module "secgp"{
     alb_ingress_port = var.alb_ingress_port
     ssh_port = var.ssh_port
     http_port = var.http_port
+    container_port = var.container_port
 }

@@ -23,6 +23,14 @@ resource "aws_security_group" "web_sg" {
     security_groups = [aws_security_group.alb_sec_gp.id]  # Only allow traffic from the ALB's security group
   }
 
+    ingress {
+    from_port = var.container_port
+    to_port = var.container_port
+    protocol = "tcp"
+    #cidr_blocks = ["0.0.0.0/0"]  # You can change this to your IP for better security
+    security_groups = [aws_security_group.alb_sec_gp.id]  # Only allow traffic from the ALB's security group
+  }
+
   # Allow all outbound traffic
   egress {
     from_port = 0
