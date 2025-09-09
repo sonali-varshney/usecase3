@@ -15,7 +15,7 @@ resource "aws_lb" "myalb" {
 }
 
 resource "aws_lb_target_group" "target_group" {
-  name     = "target_group"
+  name     = "targetgroup"
   port     = var.target_group_port
   protocol = var.protocol
   vpc_id   = var.vpc_id
