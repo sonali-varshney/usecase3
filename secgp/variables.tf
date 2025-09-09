@@ -4,5 +4,4 @@ variable "vpc_id"{}
 variable "ssh_port"{}
 variable "http_port"{}
 variable "alb_sec_gp_name"{}
-variable "vpc_id" {}
 variable "alb_ingress_port"{}
