@@ -6,8 +6,7 @@ resource "aws_lb" "myalb" {
   security_groups    = var.alb_sec_gp           #NOTE it takes a list of strings
 #  vpc_id             = var.vpc_id #Can't configure a value for "vpc_id": its value will be decided automatically based on the result of applying this configuration
   subnets            = var.pubsubnet
-
-  enable_deletion_protection = true
+ # enable_deletion_protection = true
 
   tags = {
     name = var.alb_name
@@ -21,7 +20,7 @@ resource "aws_lb_target_group" "target_group" {
   vpc_id   = var.vpc_id
   health_check {
     path = var.health_check_path
-    port = "80"
+    port = "8080"
     protocol            = "HTTP"
     interval            = 30
     timeout             = 5
@@ -52,5 +51,5 @@ resource "aws_lb_target_group_attachment" "lb_target_group_attachment" {
   count = length(var.ec2_id) 
   target_group_arn = aws_lb_target_group.target_group.arn
   target_id        = var.ec2_id[count.index]
-  port             = 80
+  port             = 8080
 }

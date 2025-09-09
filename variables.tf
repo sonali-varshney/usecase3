@@ -74,7 +74,7 @@ variable "instance_type"{
 }
 
 variable "target_group_port" {
-    default = 80
+    default = 8080
 }
 
 variable "protocol" {
@@ -82,7 +82,7 @@ variable "protocol" {
 }
 
 variable "health_check_path" {
-    default = "/"
+    default = "/login"
 }
 variable "alb_name" {
     default = "myalb"
