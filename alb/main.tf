@@ -4,8 +4,7 @@ resource "aws_lb" "myalb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [var.alb_sec_gp]           #NOTE it takes a list of strings
-#  vpc_id             = var.vpc_id #Can't configure a value for "vpc_id": its value will be decided
-  automatically based on the result of applying this configuration
+#  vpc_id             = var.vpc_id #Can't configure a value for "vpc_id": its value will be decided automatically based on the result of applying this configuration
   subnets            = var.pubsubnet
 
   enable_deletion_protection = true
