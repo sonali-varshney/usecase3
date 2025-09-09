@@ -30,7 +30,7 @@ variable "alb_sec_gp" {
 
 variable "pub_cidr_block" {
   description = "The public CIDR block"
-  type        = string
+ # type        = string
 }
 
 variable "pubsubnet" {
