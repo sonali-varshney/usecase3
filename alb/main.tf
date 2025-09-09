@@ -3,7 +3,7 @@ resource "aws_lb" "myalb" {
  # count            = length(var.pub_cidr_block)
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [var.alb_sec_gp]           #NOTE it takes a list of strings
+  security_groups    = var.alb_sec_gp           #NOTE it takes a list of strings
 #  vpc_id             = var.vpc_id #Can't configure a value for "vpc_id": its value will be decided automatically based on the result of applying this configuration
   subnets            = var.pubsubnet
 

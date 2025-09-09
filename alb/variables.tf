@@ -47,5 +47,5 @@ variable "listener_protocol" {
 }
 variable "ec2_id" {
   description = "The ID of the EC2 instance to attach to the target group"
-  type        = string
+  #type        = string
 }
